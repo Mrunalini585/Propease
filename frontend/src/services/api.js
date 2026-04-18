@@ -9,9 +9,9 @@
 import axios from 'axios';
 
 // Create an Axios instance with our backend URL as the base
-// We use window.location.hostname so it works on both localhost (laptop) and local IP (mobile)
+// Any call like api.get('/properties') will hit http://localhost:5000/api/properties
 const api = axios.create({
-  baseURL: `http://${window.location.hostname}:5000/api`,
+  baseURL: 'http://localhost:5000/api',
   headers: { 'Content-Type': 'application/json' }
 });
 
@@ -102,29 +102,29 @@ export const tenantAPI = {
 // PAYMENT ENDPOINTS
 // ============================================================
 export const paymentAPI = {
-  getAll: () => api.get('/payments'),
-  create: (data) => api.post('/payments', data),
-  update: (id, data) => api.put(`/payments/${id}`, data),
-  delete: (id) => api.delete(`/payments/${id}`),
+  getAll:  ()           => api.get('/payments'),
+  create:  (data)       => api.post('/payments', data),
+  update:  (id, data)   => api.put(`/payments/${id}`, data),
+  delete:  (id)         => api.delete(`/payments/${id}`),
 };
 
 // ============================================================
 // MAINTENANCE ENDPOINTS
 // ============================================================
 export const maintenanceAPI = {
-  getAll: () => api.get('/maintenance'),
-  create: (data) => api.post('/maintenance', data),
-  update: (id, data) => api.put(`/maintenance/${id}`, data),
+  getAll:  ()         => api.get('/maintenance'),
+  create:  (data)     => api.post('/maintenance', data),
+  update:  (id, data) => api.put(`/maintenance/${id}`, data),
 };
 
 // ============================================================
 // MESSAGE ENDPOINTS
 // ============================================================
 export const messageAPI = {
-  getConversations: () => api.get('/messages/conversations'),
-  getMessages: (userId) => api.get(`/messages/${userId}`),
-  send: (data) => api.post('/messages', data),
-  getUnreadCount: () => api.get('/messages/unread'),
+  getConversations: ()           => api.get('/messages/conversations'),
+  getMessages:      (userId)     => api.get(`/messages/${userId}`),
+  send:             (data)       => api.post('/messages', data),
+  getUnreadCount:   ()           => api.get('/messages/unread'),
 };
 
 // ============================================================
